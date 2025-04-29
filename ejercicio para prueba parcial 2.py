@@ -1,72 +1,73 @@
 """
-desarrollo un programa en pyton que le permita generer un numero aleatorio dentro de un rango definido por 
-el usuario 
-
-y ajustarlo dividiendo entre 4 
-
-luego el usuario deveria adivinar el numero
-entre un maximo de 3 intentos luego el usuario deberia adivinar el maximo en un rango de 3 intentos
-
-
-cindicion 1
-ingreso de datos
-condicion a y b
-el usuario ingresa 2 numeros enteros
-que representan el rango numerico
-el primer numero debe ser menor que el segundo
-
-#-------------no entendi si era otro ejercicio o seguia con el mismo----------------
-
-numero 2 generacion del numero aleatorio a se elige un numero aletorio dentro del rango ingresado b el numero 
-se ajusta dividiendo entre 4 y 
-redondealo al numero
-3 intento del usuario
-a, si el usuario asierta se muestra un mensaje de felicitacion
-segundo intento , si el usuario no asierta se le indica si el numero es mayor o menor
-tercer intento si no asierta nuevamente se le devuelve a dar una pista
-si no asierta en los 3 intentos el programa muestra un :intenta nuevamente
-
-"""
-
-#1
+ Debemos realizar un programa, que indique un rango numerico insertando un valor para 
+ generar otro aleatorio dentro de ese mismo rango continuando con la misma suma el programa debe calcular el 
+ promedio
+ 
+ ejercicio por encima
+ 
+ dato:
+ ocupar flag  en el examen 
+ ocupar librelia import ramdom
+ 
+  n1 = ? Ej: 100
+  100 tope, aleatorio genere otro numero
+  n2 = ? Ej: 80 a este sacar un %
+  pedir el porcentaje: Ej: 10%
+ el 10% de 80 = 8
+ dame un numero otra vez pero con la condicion si decide sumar o restar
+ Ej si es un 20 + 8 = 28 y lo mismo con restar
+ """
 
 
-#importamos la carpeta
-import random
+# pedir numero 1
+Num_1 = int(input("Dame un número aleatorio: "))
 
-# Pedimos los límites
-lower_limit = int(input("Introduce el límite inferior: "))
+
+#recalcar que este sera el tope
 print()
-upper_limit = int(input("Introduce el límite superior: "))
+print("Este será el tope máximo:", Num_1)
 print()
 
-# Validamos los límites
-while lower_limit >= upper_limit:
-    print("El límite inferior debe ser menor al límite superior. Intenta de nuevo.")
+
+#pedir numero 2
+Num_2 = int(input("Dame otro número aleatorio entre el tope: "))
+
+
+#proceso para que el numero 2 no pase el tope del numero 1
+while Num_2 > Num_1:
     print()
-    lower_limit = int(input("Introduce el límite inferior: "))
-    upper_limit = int(input("Introduce el límite superior: "))
+    print(f"El número no puede ser mayor que {Num_1}. Inténtalo de nuevo:")
+    print()
+    Num_2 = int(input("Dame otro número aleatorio entre el tope: "))
 
-# Generamos el número aleatorio
-numero_generado = random.randint(lower_limit, upper_limit)
-numero_dividido = numero_generado // 4
 
-print("He generado un número aleatorio entre los límites y lo he dividido entre 4.")
-print()
-#juego
+#pedir numero en %
+NumPorcent = int(input("Dame otro número aleatorio el cual será en %: "))
 
-print("Tienes 3 intentos para adivinar el numero dividivo entre 4")
-print()
-for intentos in range(1,4):
-    respuesta = int(input(f"intento,{intentos} :cual crees que es el numero dividido entre 4?:"))
-    if respuesta == numero_dividido:
-        print(f"!CORRECTO!El numero era {numero_dividido}")
-        break
-    elif intentos == 3:
-        print(f"1Se te acabaron los intentos! El numero era {numero_dividido}")
-    else:
-        print("Incorrecto, intenta nuevamente")
 
+#proceso para sacar el %
+Resultado = int((Num_2 * NumPorcent) / 100)
+
+print(f"El {NumPorcent}% de {Num_2} es: {Resultado}")
+
+
+#pedir el ultimo numero para sumarlo o restarlo
+Num_3 = int(input("Dame el último número aleatorio: "))
+
+
+#proceso para sumar o restar
+operacion = input("Escribe 'sumar' para sumar o 'restar' para restar: ")
+
+if operacion == 'sumar':
+    resultado_final = Resultado + Num_3
+    print(f"El resultado de sumar {Resultado} y {Num_3} es: {resultado_final}")
+elif operacion == 'restar':
+    resultado_final = Resultado - Num_3
+    print(f"El resultado de restar {Resultado} y {Num_3} es: {resultado_final}")
+else:
+    print("Opción no válida. Por favor, intenta nuevamente.")
+
+    
 
 
 
