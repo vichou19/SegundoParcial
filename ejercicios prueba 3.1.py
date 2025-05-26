@@ -30,6 +30,62 @@ si no se ah ingresado ningun numero, pedir estimado ingrese primero el valor
 opcion 4/ salir, dar un mensaje de adios
 """
 
+numeros = []
+
+# Funciones auxiliares
+def ingresar_numero():
+    while True:
+        entrada = input("Introduce un número entero entre 0 y 100: ")
+        if entrada.isdigit():
+            numero = int(entrada)
+            if 0 <= numero <= 100:
+                numeros.append(numero)
+                print("Número ingresado correctamente.")
+                break
+            else:
+                print("El número debe estar entre 0 y 100. Intenta nuevamente.")
+        else:
+            print("Debes ingresar un número entero.")
+
+def mostrar_mayor():
+    if numeros:
+        print(f"El número mayor ingresado hasta ahora es: {max(numeros)}")
+    else:
+        print("No se han ingresado números. Por favor, utiliza la opción 1 primero.")
+
+def mostrar_promedio():
+    if numeros:
+        promedio = sum(numeros) / len(numeros)
+        print(f"El promedio de los números ingresados es: {promedio:.2f}")
+    else:
+        print("No se han ingresado números. Por favor, utiliza la opción 1 primero.")
+
+# Menú principal
+opcion = -1
+while opcion != 4:
+    print("\nMenú Principal")
+    print("1. Ingresar un número")
+    print("2. Mostrar número mayor")
+    print("3. Mostrar promedio")
+    print("4. Salir")
+
+    try:
+        print()
+        opcion = int(input("Elige una opción: "))
+        print()
+        if opcion == 1:
+            ingresar_numero()
+        elif opcion == 2:
+            mostrar_mayor()
+        elif opcion == 3:
+            mostrar_promedio()
+        elif opcion == 4:
+            print("Gracias por utilizar el programa. ¡Adiós!")
+        else:
+            print("Opción no válida. Intenta nuevamente.")
+    except ValueError:
+        print("Debes ingresar una opción válida numérica.")
+
 #3 ejercicio para prueba 3
 
 """
@@ -44,3 +100,43 @@ una vez ingresado los datos a mostrar en pantalla
 deberia tener una opcion para entrar y salir
 validar si pone un decimal mandar mensaje( ingresa numero entero)
 """
+
+print("Bienvenido al registro de esquemas de vacunación")
+while True:
+    cantidad = input("Introduce la cantidad de personas a registrar (número entero): ")
+    if cantidad.isdigit():
+        cantidad = int(cantidad)
+        break
+    else:
+        print("Ingresa un número entero válido.")
+
+
+
+
+
+registros = []
+
+for i in range(cantidad):
+    print(f"\nRegistro de la persona {i + 1}:")
+    dosis = int(input("Introduce el número de dosis administradas: "))
+    esquema = "✅" if dosis >= 2 else "✖️"
+    registros.append({"persona": i + 1, "dosis": dosis, "esquema": esquema})
+
+
+
+print("\nResumen de esquemas de vacunación:")
+for registro in registros:
+    print(f"Persona {registro['persona']} - Dosis: {registro['dosis']} - Esquema: {registro['esquema']}")
+
+
+
+while True:
+    opcion = input("¿Quieres realizar otro registro? (sí/no): ").strip().lower()
+    if opcion == "no":
+        print("¡Gracias por utilizar el programa! ¡Adiós!")
+        break
+    elif opcion == "sí":
+        # Aquí puedes reiniciar el proceso si lo necesitas
+        pass
+    else:
+        print("Opción no válida. Inténtalo nuevamente.")
