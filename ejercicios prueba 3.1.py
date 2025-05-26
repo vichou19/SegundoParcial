@@ -140,3 +140,80 @@ while True:
         pass
     else:
         print("Opción no válida. Inténtalo nuevamente.")
+
+
+
+#1
+"""
+Se desea contriur un programa en python que permita calcular el area de varios triangulos
+para esto, se le solicitara indicar cuantos triangulos desea procesar
+por cada triangulo, se debera ingresar la base y la altura, amnos valores positivos y reales
+la formula: area = base x altura entre 2
+si el alumno ingresa un valor incorrecto debe mostrar un mensaje de error
+"""
+
+
+
+
+
+
+
+
+
+
+#2
+"""
+Se desea contriur un programa en python que permita gestionar un sistema simple de venta de entradas para el cine
+por medio de un menu de opciones el cual d un stock de entradas previamente cargadas
+(el programa debe empezar con 70 entradas), debe realizar distitas accciones
+
+
+1. dar la bienvenida
+
+MENU
+2. ver disponibilidad de sillas
+3. ofrecxer la venta de la entrada
+4. consultar el numero de entradas a comprar
+5. salir
+
+
+"""
+
+entradas_dispo = 70
+opcion = -1
+
+while opcion != 5:
+    print("\nMENÚ PRINCIPAL")
+    print("1. Ver disponibilidad de sillas")
+    print("2. Comprar una entrada")
+    print("3. Consultar el número de entradas a comprar")
+    print("4. Mostrar disponibilidad actual")
+    print("5. Salir")
+
+    try:
+        opcion = int(input("Escoge una opción: "))
+    except ValueError:
+        print("Debes ingresar una opción válida.")
+        continue
+
+    if opcion == 1:
+        print(f"\nDisponibilidad de entradas: {entradas_dispo} sillas.")
+    elif opcion == 2:
+        if entradas_dispo > 0:
+            entradas_dispo -= 1
+            print("Entrada comprada con éxito. ¡Disfruta tu experiencia en el cine!")
+        else:
+            print("¡Lo sentimos! No hay entradas disponibles.")
+    elif opcion == 3:
+        consulta = int(input("¿Cuántas entradas deseas comprar?: "))
+        if consulta <= entradas_dispo:
+            entradas_dispo -= consulta
+            print(f"Has comprado {consulta} entradas. Disfruta tu película.")
+        else:
+            print(f"Lo sentimos, solo quedan {entradas_dispo} entradas disponibles.")
+    elif opcion == 4:
+        print(f"\nActualmente hay {entradas_dispo} entradas disponibles.")
+    elif opcion == 5:
+        print("\nGracias por usar el sistema. ¡Adiós!")
+    else:
+        print("\nOpción no válida, intenta nuevamente.")
